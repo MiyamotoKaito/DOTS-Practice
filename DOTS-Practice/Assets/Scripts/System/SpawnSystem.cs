@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using Unity.Collections;
+using Unity.Entities;
 
 /// <summary>
 /// アップデートのタイミングを明示的に呼び出し
@@ -23,5 +24,11 @@ public partial struct SpawnSystem : ISystem
     {
         //ワールド内にたった一つだけ存在するConfigコンポーネントを取得する
         var config = SystemAPI.GetSingleton<Config>();
+        //prefabのインスタンス処理
+        var instances = state.EntityManager.Instantiate(
+            config.Character,
+            config.SpawnCount,
+            Allocator.Temp
+            );
     }
 }
