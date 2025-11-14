@@ -19,4 +19,8 @@ public partial struct SpawnSystem : ISystem
     {
         state.RequireForUpdate<Config>();
     }
+    public void OnUpdate(ref SystemState state)
+    {
+
+    }
 }
