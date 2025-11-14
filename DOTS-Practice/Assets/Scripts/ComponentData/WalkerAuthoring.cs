@@ -1,6 +1,9 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
+/// <summary>
+/// Walker用のクラス
+/// </summary>
 public class WalkerAuthoring : MonoBehaviour
 {
     [SerializeField, Header("前方向に動かす速度")]
@@ -8,6 +11,9 @@ public class WalkerAuthoring : MonoBehaviour
     [SerializeField, Header("角度を変える速度")]
     private float _angularSpeed;
 
+    /// <summary>
+    /// Walkerの変数にWalkerAuthoringの変数の値を変換するBakerクラス
+    /// </summary>
     class Baker : Baker<WalkerAuthoring>
     {
         public override void Bake(WalkerAuthoring authoring)
@@ -21,6 +27,9 @@ public class WalkerAuthoring : MonoBehaviour
         }
     }
 }
+/// <summary>
+/// コンポーネント
+/// </summary>
 public struct Walker : IComponentData
 {
     public float ForwardSpeed;
