@@ -11,6 +11,21 @@ public class ConfigAuthoring : MonoBehaviour
     private int _spawnCount;
     [SerializeField]
     private int _randomSeed;
+
+    class Baker : Baker<ConfigAuthoring>
+    {
+        public override void Bake(ConfigAuthoring authoring)
+        {
+            var data = new Config()
+            {
+                //GetEntityメソッドはゲームオブジェクト型をEntity型に変換できる(重要)
+                Character = GetEntity(authoring._character, TransformUsageFlags.Dynamic),
+                SpawnRadius = authoring._spawnRadius,
+                SpawnCount = authoring._spawnCount,
+                RandomSeed = authoring._randomSeed
+            };
+        }
+    }
 }
 public struct Config : IComponentData
 {
