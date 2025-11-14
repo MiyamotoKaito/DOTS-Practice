@@ -1,8 +1,9 @@
-using Unity.Entities;
+ï»¿using Unity.Entities;
+using Unity.Mathematics;
 using UnityEngine;
 
 /// <summary>
-/// Dancer‚ğBake‚·‚é‚¾‚¯‚ÌƒNƒ‰ƒX
+/// Dancerã‚’Bakeã™ã‚‹ã ã‘ã®ã‚¯ãƒ©ã‚¹
 /// </summary>
 public class DancerAuthoring : MonoBehaviour
 {
@@ -19,4 +20,7 @@ public class DancerAuthoring : MonoBehaviour
 public struct Dancer : IComponentData
 {
     public float Speed;
+
+    public static Dancer Random(uint seed)
+    => new Dancer() { Speed = new Unity.Mathematics.Random(seed).NextFloat(1, 8) };
 }
