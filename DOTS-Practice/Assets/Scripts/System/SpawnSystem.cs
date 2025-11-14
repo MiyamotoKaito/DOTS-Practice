@@ -11,5 +11,12 @@
 /// </summary>
 public partial struct SpawnSystem : ISystem
 {
-
+    /// <summary>
+    /// このシステムはConfigコンポーネントが存在する場合だけ実行される
+    /// </summary>
+    /// <param name="state"></param>
+    public void OnCreate(ref SystemState state)
+    {
+        state.RequireForUpdate<Config>();
+    }
 }
