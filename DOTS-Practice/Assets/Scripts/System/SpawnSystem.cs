@@ -21,6 +21,7 @@ public partial struct SpawnSystem : ISystem
     }
     public void OnUpdate(ref SystemState state)
     {
-
+        //ワールド内にたった一つだけ存在するConfigコンポーネントを取得する
+        var config = SystemAPI.GetSingleton<Config>();
     }
 }
