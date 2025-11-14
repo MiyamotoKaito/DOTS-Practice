@@ -10,7 +10,7 @@ public class ConfigAuthoring : MonoBehaviour
     [SerializeField]
     private int _spawnCount;
     [SerializeField]
-    private int _randomSeed;
+    private uint _randomSeed;
 
     class Baker : Baker<ConfigAuthoring>
     {
@@ -24,6 +24,7 @@ public class ConfigAuthoring : MonoBehaviour
                 SpawnCount = authoring._spawnCount,
                 RandomSeed = authoring._randomSeed
             };
+            AddComponent(GetEntity(TransformUsageFlags.Dynamic), data);
         }
     }
 }
@@ -32,5 +33,5 @@ public struct Config : IComponentData
     public Entity Character;
     public float SpawnRadius;
     public int SpawnCount;
-    public int RandomSeed;
+    public uint RandomSeed;
 }
